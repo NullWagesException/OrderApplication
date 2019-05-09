@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>菜品管理</title>
+<link rel="stylesheet" type="text/css" href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+	<script type="text/javascript" src="ui/date.js"></script>
+<script type="text/javascript" src="js/crud.js"></script>
+<script type="text/javascript">
+	var name="item";
+	var columns=[[
+	  		    {field:'itemid',title:'菜品编号',width:100},
+        		{field:'itemname',title:'菜品名字',width:100},
+	  		    {field:'itemscore',title:'菜品评分',width:100,formatter: function(value,row,index){
+                        if(value == null) return "暂无";
+                    }},
+				{field:'itemcontent',title:'菜品描述',width:100},
+				{field:'itemPrice',title:'菜品价格',align:'center',width:100,formatter: function(value,row,index){
+                        return value + "元";
+                    }},
+				{field:'itemImgPath',title:'菜品图片',width:100,formatter:_showimg},
+				{field:'-',title:'操作',width:120,align:'center',formatter: function(value,row,index){
+						return '<a href="javascript:void(0)" onclick="upitem('+row.itemid + ')">更改</a>' +
+                            '&nbsp;&nbsp;' + '<a href="javascript:void(0)" onclick="del('+ row.itemid + ')">删除</a>'
+					}}
+    			]];
+	
+	function _showimg(value,row,index) {
+        if (value){
+            return "<img src='" + value + "'style='width:100px;height:60px'";
+        }else{
+            return null
+        }
+    }
+
+</script>
+</head>
+<body>
+<table id="grid"></table>
+<div id="win" class="easyui-window" title="菜品更改" style="width:400px;height:200px"
+	 data-options="iconCls:'icon-save',modal:true">
+	<form id="editForm" action="/item/update" method="post">
+        <p>提示：不写入值默认不修改原属性</p>
+		<input type="text" id="fileid" hidden="hidden" name="itemid">
+		菜品名字：<input type="text" id="itemname" name="itemname">
+		<br>
+		菜品评分：<input type="text" id="itemscore" name="itemscore">
+		<br>
+		菜品描述：<input type="text" id="itemcontent" name="itemcontent">
+		<br>
+		菜品价格：<input type="text" id="itemPrice" name="itemPrice">
+		<br>
+		菜品图片：<input type="file" name="myfile" id="myfile" value=""/>
+        <input type="text" name="itemImgPath" hidden="hidden" id="itemImgPath" value=""/>
+		<a id="btnSave" class="easyui-linkbutton" data-options="iconCls:'icon-save'">提交</a>
+	</form>
+</div>
+
+
+</body>
+</html>

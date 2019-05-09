@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zf.dao.UserinfoMapper">
+
+  <select id="get" parameterType="com.zf.pojo.Userinfo" resultType="com.zf.pojo.Userinfo">
+    select * from `userinfo` where username=#{username} and password=#{password}
+  </select>
+
+  <select id="getAll" resultType="com.zf.pojo.Userinfo">
+    select * from `userinfo`
+  </select>
+
+  <select id="check" parameterType="com.zf.pojo.Userinfo" resultType="com.zf.pojo.Userinfo">
+    select * from `userinfo` where username=#{username}
+  </select>
+
+  <select id="getID" parameterType="com.zf.pojo.Userinfo" resultType="com.zf.pojo.Userinfo">
+    select * from `userinfo` where id=#{id}
+  </select>
+
+  <!--添加-->
+  <insert id="insert" parameterType="com.zf.pojo.Userinfo">
+    insert into `userinfo` (`username`,`password`,`address`,`phone`) values (#{username},#{password},#{address},#{phone})
+  </insert>
+
+  <!--删除-->
+  <delete id="delete" parameterType="int">
+    delete from `userinfo` where id=#{id}
+  </delete>
+
+  <!--更新-->
+  <update id="update" parameterType="com.zf.pojo.Userinfo">
+    update `userinfo` set
+                    username=#{username},
+                    password=#{password},
+                    phone=#{phone},
+                    address=#{address} where id=#{id}
+  </update>
+
+</mapper>

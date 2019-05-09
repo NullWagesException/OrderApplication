@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zf.dao.IteminfoMapper">
+
+
+    <select id="get" parameterType="com.zf.pojo.Iteminfo" resultType="com.zf.pojo.Iteminfo">
+        select * from `iteminfo` where itemid=#{itemid}
+    </select>
+
+    <select id="getAll" resultType="com.zf.pojo.Iteminfo">
+        select * from `iteminfo`
+    </select>
+
+
+    <!--添加-->
+    <insert id="insert" parameterType="com.zf.pojo.Iteminfo">
+        insert into `iteminfo`
+        (`itemname`,`itemscore`,`itemcontent`,`itemPrice`,`itemImgPath`)
+        values (#{itemname},#{itemscore},#{itemcontent},#{itemPrice},#{itemImgPath})
+    </insert>
+
+    <!--删除-->
+    <delete id="delete" parameterType="int">
+        delete from `iteminfo` where itemid=#{itemid}
+    </delete>
+
+    <!--更新-->
+    <update id="update" parameterType="com.zf.pojo.Iteminfo">
+        update `iteminfo` set
+                              itemname=#{itemname},
+                              itemscore=#{itemscore},
+                              itemcontent=#{itemcontent},
+                              itemImgPath=#{itemImgPath},
+                              itemPrice=#{itemPrice} where itemid=#{itemid}
+    </update>
+    
+</mapper>
