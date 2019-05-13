@@ -3,7 +3,7 @@
 <mapper namespace="com.zf.dao.UserinfoMapper">
 
   <select id="get" parameterType="com.zf.pojo.Userinfo" resultType="com.zf.pojo.Userinfo">
-    select * from `userinfo` where username=#{username} and password=#{password}
+    select * from `userinfo` where phone=#{phone} and password=#{password}
   </select>
 
   <select id="getAll" resultType="com.zf.pojo.Userinfo">
@@ -11,7 +11,7 @@
   </select>
 
   <select id="check" parameterType="com.zf.pojo.Userinfo" resultType="com.zf.pojo.Userinfo">
-    select * from `userinfo` where username=#{username}
+    select * from `userinfo` where phone=#{phone}
   </select>
 
   <select id="getID" parameterType="com.zf.pojo.Userinfo" resultType="com.zf.pojo.Userinfo">

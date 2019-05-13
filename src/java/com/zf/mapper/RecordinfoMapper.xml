@@ -14,8 +14,8 @@
   <!--添加-->
   <insert id="insert" parameterType="com.zf.pojo.Recordinfo">
     insert into `recordinfo`
-      (`username`,`recordcontent`,`recordscore`,`starttime`,`interval`,`itemid`)
-    values (#{username},#{recordcontent},#{recordscore},#{starttime},#{interval},#{itemid})
+      (`username`,`recordcontent`,`recordscore`,`starttime`,`interval`,`itemid`,`userPhone`,`address`,`totalPrice`,`itemIdNum`)
+    values (#{username},#{recordcontent},#{recordscore},#{starttime},#{interval},#{itemid},#{userPhone},#{address},#{totalPrice},#{itemIdNum})
   </insert>
 
   <!--删除-->
@@ -31,7 +31,11 @@
                     starttime=#{starttime},
                     itemid=#{itemid},
                     interval=#{interval},
-                    recordscore=#{recordscore} where recordid=#{recordid}
+                    recordscore=#{recordscore},
+                    userPhone=#{userPhone},
+                    address=#{address},
+                    totalPrice=#{totalPrice},
+                    itemIdNum=#{itemIdNum} where recordid=#{recordid}
   </update>
 
 

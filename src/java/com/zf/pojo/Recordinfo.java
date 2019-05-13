@@ -17,6 +17,46 @@ public class Recordinfo {
 
     private String recordcontent;
 
+    private String userPhone;
+
+    private String address;
+
+    private Double totalPrice;
+
+    private String itemIdNum;
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public String getItemIdNum() {
+        return itemIdNum;
+    }
+
+    public void setItemIdNum(String itemIdNum) {
+        this.itemIdNum = itemIdNum;
+    }
+
     public Short getRecordid() {
         return recordid;
     }
